@@ -128,8 +128,13 @@ void addElementAndPrint(arrayLength_t *arr, int element){
 
 /* Function to print the array */
 int printArr(arrayLength_t *a1){
-    printf("{[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d]", a1->arrInt[0], a1->arrInt[1], a1->arrInt[2], a1->arrInt[3], a1->arrInt[4], a1->arrInt[5], a1->arrInt[6], a1->arrInt[7], a1->arrInt[8], a1->arrInt[9]);
-    printf(" %d, %d}\n", a1->arrSize, a1->arrAdd);
+    int i;
+    printf("{[");
+    for(i = 0; i < SIZE; i++){
+        printf("%d", a1->arrInt[i]);
+        if(i < SIZE - 1) printf(", ");
+    }
+    printf("] %d, %d}\n", a1->arrSize, a1->arrAdd);
     return SUCCESS;
 }
 
@@ -150,10 +155,10 @@ int initArray(arrayLength_t *a2){
 
 /* Function to add an element to the array */
 int addElement(arrayLength_t *a3, int v){
-    if((*a3).arrSize<SIZE && v>=0){
-        (*a3).arrInt[(*a3).arrSize]=v;
+    if((*a3).arrSize < SIZE && (*a3).arrSize >= 0 && v >= 0){
+        (*a3).arrInt[(*a3).arrSize] = v;
         (*a3).arrSize++;
-        (*a3).arrAdd+=v;
+        (*a3).arrAdd += v;
         return SUCCESS;
     }else{
         return ERROR;
